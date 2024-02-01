@@ -1,3 +1,4 @@
+import { NotFound } from '@/components/screens/not-found/not-found.component'
 import { ROUTES } from './routes.data'
 
 export class Router {
