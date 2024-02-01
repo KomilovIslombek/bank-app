@@ -1,2 +1,1 @@
-
-console.log('privet islombek!')
+import '@/styles/global.scss'
