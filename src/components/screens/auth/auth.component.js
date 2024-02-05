@@ -6,6 +6,6 @@ export class Auth extends BaseScreen {
 	}
 
 	render() {
-		return '<p>Auth<p>'
+		return '<p>Auth</p>'
 	}
 }

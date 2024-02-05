@@ -5,19 +5,19 @@ export class Layout {
 	}
 
 	render() {
-		const headerHTML = `<header style="display:flex;justify-content:space-between; padding-inline:15px">
-      Header
-      <nav>
-        <a href="/">Home</a>
-        <a href="/auth">Auth</a>
-      </nav>
-    </header>
-    `
+		const headerHTML = `<header>
+			Header
+			<nav>
+				<a href="/">Home</a>
+				<a href="/auth">Auth</a>
+			</nav>
+		</header>`
+
 		return `
-      ${headerHTML}
-      <main>
-        ${this.children}
-      </main>
-    `
+			${headerHTML}
+			<main>
+				${this.children}
+			</main>
+		`
 	}
 }

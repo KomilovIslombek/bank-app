@@ -1,6 +1,7 @@
-import { NotFound } from '@/components/screens/not-found/not-found.component'
-import { ROUTES } from './routes.data'
 import { Layout } from '@/components/layout/layout.component'
+import { NotFound } from '@/components/screens/not-found/not-found.component'
+
+import { ROUTES } from './routes.data'
 
 export class Router {
 	#routes = ROUTES
@@ -11,6 +12,7 @@ export class Router {
 		window.addEventListener('popstate', () => {
 			this.#handleRouteChange()
 		})
+
 		this.#handleRouteChange()
 		this.#handleLinks()
 	}
@@ -26,15 +28,15 @@ export class Router {
 		})
 	}
 
+	getCurrentPath() {
+		return window.location.pathname
+	}
+
 	navigate(path) {
 		if (path !== this.getCurrentPath()) {
 			window.history.pushState({}, '', path)
 			this.#handleRouteChange()
 		}
-	}
-
-	getCurrentPath() {
-		return window.location.pathname
 	}
 
 	#handleRouteChange() {
@@ -43,13 +45,11 @@ export class Router {
 
 		if (!route) {
 			route = {
-				path: '404',
 				component: NotFound
 			}
 		}
 
 		this.#currentRoute = route
-
 		this.#render()
 	}
 
@@ -61,7 +61,6 @@ export class Router {
 				router: this,
 				children: component.render()
 			})
-
 			document.getElementById('app').innerHTML = this.#layout.render()
 		} else {
 			document.querySelector('main').innerHTML = component.render()

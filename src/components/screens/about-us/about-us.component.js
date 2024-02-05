@@ -6,6 +6,6 @@ export class AboutUs extends BaseScreen {
 	}
 
 	render() {
-		return '<p>AboutUs<p>'
+		return '<p>About us</p>'
 	}
 }
