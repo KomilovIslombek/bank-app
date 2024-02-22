@@ -4,6 +4,8 @@ import renderService from '@/core/services/render.service'
 
 import styles from './home.module.scss'
 import template from './home.template.html'
+import { Field } from '@/components/ui/field/field.component'
+import { UserItem } from '@/components/ui/user-item/user-item.component'
 
 export class Home extends BaseScreen {
 	constructor() {

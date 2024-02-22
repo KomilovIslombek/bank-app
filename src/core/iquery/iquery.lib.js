@@ -1,3 +1,5 @@
+import { formatCardNumberWithDashes } from '@/utils/format/format-card-number'
+
 export class IQuery {
 	/**
 	 * Create a new IQuery instance.
@@ -183,17 +185,18 @@ export class IQuery {
 	}
 
 	/**
-	 * Set the HTMLElement text of the selected element.
-	 * @param {string} text - The HTMLElement text to set.
-	 * @returns {IQuery} The current IQuery instance for chaining
+	 * Get or set the text content of the selected element.
+	 * @param {string} [textContent] - Optional text content to set. If
+	 not provided, the current text content will be returned.
+	 * @returns {IQuery|string} The current IQuery instance for chaining when setting text content, or the current text content when getting.
 	 */
-	text(text) {
-		if (typeof text !== 'string') {
-			throw new Error('text must be string.')
+	text(textContent) {
+		if (typeof textContent === 'undefined') {
+			return this.element.textContent
+		} else {
+			this.element.textContent = textContent
+			return this
 		}
-
-		this.element.textContent = text
-		return this
 	}
 
 	/**
@@ -228,6 +231,25 @@ export class IQuery {
 		}
 
 		return this
+	}
+
+	/**
+	 * Set or get the value of an attribute on the selected element.
+	 * @param {string} attributeName - The name attribute to set or get.
+	 * @param {string} [value] - The value to set for the attribute.If not provided, the current value of the attribute will be returned.
+	 * @returns {IQuery|string} The current IQuery instance for chaining (if setting) or the attribute value (if getting).
+	 */
+	attr(attributeName, value) {
+		if (typeof attributeName !== 'string') {
+			throw new Error('Attribute name must be a string!')
+		}
+
+		if (typeof value === 'undefined') {
+			return this.element.getAttribute(attributeName)
+		} else {
+			this.element.setAttribute(attributeName, value)
+			return this
+		}
 	}
 }
 

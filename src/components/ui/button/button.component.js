@@ -8,7 +8,6 @@ import { $I } from '@/core/iquery/iquery.lib'
 export class Button extends ChildComponent {
 	constructor({ children, onClick, variant }) {
 		super()
-
 		if (!children) throw new Error('Children is empty!')
 
 		this.children = children
@@ -19,10 +18,9 @@ export class Button extends ChildComponent {
 	render() {
 		this.element = renderService.htmlToElement(template, [], styles)
 
-		$I(this.element)
-			.html(this.children)
-			.click(this.onClick)
-			.addClass(styles[this.variant])
+		$I(this.element).html(this.children).click(this.onClick)
+
+		if (this.variant) $R(this.element).addClass(styles[this.variant])
 
 		return this.element
 	}

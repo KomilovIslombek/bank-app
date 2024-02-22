@@ -3,6 +3,7 @@ import renderService from '@/core/services/render.service'
 
 import styles from './auth.module.scss'
 import template from './auth.template.html'
+import { Heading } from '@/components/ui/heading/heading.component'
 
 export class Auth extends BaseScreen {
 	constructor() {
@@ -10,7 +11,8 @@ export class Auth extends BaseScreen {
 	}
 
 	render() {
-		const element = renderService.htmlToElement(template, [], styles)
+		const heading = new Heading('Auth')
+		const element = renderService.htmlToElement(template, [heading], styles)
 
 		return element
 	}
